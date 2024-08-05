@@ -1,26 +1,55 @@
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lions Mass Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        #calculator {
+            margin: 20px auto;
+            width: fit-content;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+    <script>
+        function calculateLionsMass() {
+            const sunMass = 1.989 * Math.pow(10, 30);
+            const lionMass = 190; // average mass of a lion in kg
+            const lions = document.getElementById('lions').value;
 
-<script>
-    // Create a calculator where you can enter a number of lions and it will output their mass compared to the sun's mass
-    // The sun's mass is 1.989 x 10^30 kg
-    // The average lion's mass is 190 kg
-    // Put the calculator here:
-    function calculateLionsMass() {
-        const sunMass = 1.989 * Math.pow(10, 30);
-        const lionMass = 190;
-        const lions = document.getElementById('lions').value;
-        const lionsMass = lions * lionMass;
-        const lionsMassInSun = lionsMass / sunMass;
-        document.getElementById('result').innerHTML = `The mass of ${lions} lions is ${lionsMassInSun} times the mass of the sun.`;
-    }
-</script>
+            if (lions < 0) {
+                alert('Please enter a non-negative number of lions.');
+                return;
+            }
 
-<center>
+            const lionsMass = lions * lionMass;
+            const lionsMassInSun = lionsMass / sunMass;
+
+            document.getElementById('result').innerHTML = `The mass of ${lions} lions is ${lionsMassInSun.toPrecision(3)} times the mass of the sun.`;
+        }
+    </script>
+</head>
+<body>
+    <h1>Lions Mass Calculator</h1>
+    <div id="calculator">
+        <label for="lions">Number of lions:</label>
+        <input type="number" id="lions" min="0" placeholder="Enter number of lions">
+        <button onclick="calculateLionsMass()">Calculate</button>
+
+        <div id="result"></div>
+    </div>
     <img src="https://miro.medium.com/v2/resize:fit:599/1*93mYM4Z_qFJ2TW5mZoLOVA.jpeg" alt="SunWinsEveryTime" width="500" height="300">
-
-    <label for="lions">Number of lions:</label>
-    <input type="number" id="lions">
-    <button onclick="calculateLionsMass()">Calculate</button>
-
-    <div id="result"></div>
-</center>
+</body>
+</html>
