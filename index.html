@@ -1,2 +1,26 @@
-<h1>It's the sun, you idiots!</h1>
-<img src="https://miro.medium.com/v2/resize:fit:599/1*93mYM4Z_qFJ2TW5mZoLOVA.jpeg" alt="SunWinsEveryTime" width="500" height="300">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+    // Create a calculator where you can enter a number of lions and it will output their mass compared to the sun's mass
+    // The sun's mass is 1.989 x 10^30 kg
+    // The average lion's mass is 190 kg
+    // Put the calculator here:
+    function calculateLionsMass() {
+        const sunMass = 1.989 * Math.pow(10, 30);
+        const lionMass = 190;
+        const lions = document.getElementById('lions').value;
+        const lionsMass = lions * lionMass;
+        const lionsMassInSun = lionsMass / sunMass;
+        document.getElementById('result').innerHTML = `The mass of ${lions} lions is ${lionsMassInSun} times the mass of the sun.`;
+    }
+</script>
+
+<center>
+    <img src="https://miro.medium.com/v2/resize:fit:599/1*93mYM4Z_qFJ2TW5mZoLOVA.jpeg" alt="SunWinsEveryTime" width="500" height="300">
+
+    <label for="lions">Number of lions:</label>
+    <input type="number" id="lions">
+    <button onclick="calculateLionsMass()">Calculate</button>
+
+    <div id="result"></div>
+</center>
